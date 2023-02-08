@@ -1,0 +1,26 @@
+{
+  "name": "blog-backend",
+  "version": "1.0.0",
+  "description": "#install Node Js sudo apt update sudo apt install nodejs node -v #v12.22.9 #install npm sudo apt install npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustvjor2005/blog-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gustvjor2005/blog-backend/issues"
+  },
+  "homepage": "https://github.com/gustvjor2005/blog-backend#readme",
+  "dependencies": {
+    "config": "^3.3.9",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}
