@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var config = require('config');
+
 const conf = {
 	     host : "localhost",
 	     user : "root",
@@ -41,19 +42,24 @@ router.use((request, response, next) => {
 
 //GET method
 router.route("/comment").get((request, response) => {
+  console.log("Route GET.")
   const sql_ = sqlGet(request.get("ind"));
   conn.query(sql_, (err, result) => {
+    if(err){
+      console.log("Error ...!");
+      return console.error(err.message)
+    }	    
     response.json(result);
   });
 });	
 
 //POST method
 router.route("/comment").post((request, response) => {
-  console.log("... post comment");	
+  console.log("Route POST.");	
   const sql = sqlPost(request);
   conn.query(sql, (err, result) => {
     if (err){
-      console.log("Error ....");
+      console.log("Error ...!");
       return console.error(err.message);
     }	    
     response.json(result);
