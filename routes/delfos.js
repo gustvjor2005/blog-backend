@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var config = require('config');
+
 const conf = {
 	     host : "localhost",
 	     user : "root",
@@ -14,11 +15,10 @@ const conn = mysql.createConnection(conf);
 
 conn.connect((err) => {
     if (err){
-      console.log("Error courrred", err);
+      console.log("Ocurrio error en conexion mysql", err);
     } else {
-      console.log("Connected to MYSQL Server");	    
+      console.log("Conectado a MYSQL Server");	    
     }	    
-
 });
 
 var app = express();
@@ -29,31 +29,22 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/api', router);
 
-var port = 8090;
-app.listen(port);
+app.listen(8090);
 
-console.log('Api in running at '+ port);
+console.log('APP escuchando en el puerto 8090');
 
 router.use((request, response, next) => {
-  console.log('router.use ...');
+  console.log('Router en uso ...');
   next();
 });
 
-//GET method
-router.route("/comment").get((request, response) => {
-  const sql_ = sqlGet(request.get("ind"));
-  conn.query(sql_, (err, result) => {
-    response.json(result);
-  });
-});	
-
 //POST method
 router.route("/comment").post((request, response) => {
-  console.log("... post comment");	
+  console.log("Router recibe POST.");	
   const sql = sqlPost(request);
   conn.query(sql, (err, result) => {
     if (err){
-      console.log("Error ....");
+      console.log("Error realizando insert en bd");
       return console.error(err.message);
     }	    
     response.json(result);
@@ -63,9 +54,3 @@ router.route("/comment").post((request, response) => {
 function sqlPost(req){
   return `INSERT INTO comment(details, section, username, email, day) VALUES ("${req.body.details}", "${req.body.section}", "${req.body.username}", "${req.body.email}", now()) `;
 }
-
-function sqlGet(ind){
-  return `SELECT * FROM comment WHERE section = "${ind}" ORDER BY day DESC `
-}
-
-
