@@ -6,7 +6,9 @@ Este es un tutorial paso a paso para configurar el backend de tu blog utilizando
 
 Para crear el proyecto, sigue estos comandos:
 
+### install npm
 ```bash
+sudo apt install npm
 npm init -y
 npm install mysql
 npm install express
@@ -20,12 +22,6 @@ sudo apt update
 sudo apt install nodejs
 node -v #v12.22.9
 ```
-
-### install npm
-```bash
-sudo apt install npm
-```
-
 ### install nginx
 ```bash
 sudo apt update
