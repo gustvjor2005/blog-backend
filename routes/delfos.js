@@ -5,7 +5,7 @@ var cors = require('cors');
 var config = require('config');
 
 const conf = {
-	     host : "localhost",
+	     host : config.get('APP.host'),
 	     user : "root",
 	     password : config.get('APP.password'),
 	     database : config.get('APP.database')
