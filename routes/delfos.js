@@ -29,9 +29,9 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/api', router);
 
-app.listen(8090);
+app.listen(8091);
 
-console.log('APP escuchando en el puerto 8090');
+console.log('APP escuchando en el puerto 8091');
 
 router.use((request, response, next) => {
   console.log('Router en uso ...');
@@ -53,4 +53,26 @@ router.route("/comment").post((request, response) => {
 
 function sqlPost(req){
   return `INSERT INTO comment(details, section, username, email, day) VALUES ("${req.body.details}", "${req.body.section}", "${req.body.username}", "${req.body.email}", now()) `;
+}
+
+//GET method
+app.get('/api/comment', (rq, rs)=>{
+  var date = new Date().toLocaleString('es-PE', {
+    timeZone: 'America/Lima'
+  });
+  console.log(date, "Router recibe GET."); 
+  const sql_ = sqlGet(rq.get("ind"));
+  conn.query(sql_, (err, rs_) => {
+    if(err){
+      console.error(date, 'Error realizando consulta a bd')
+      return
+    }else{
+      rs.json(rs_)
+    }
+
+  })  
+})
+
+function sqlGet(ind){
+  return `SELECT * FROM comment WHERE section = "${ind}" ORDER BY day DESC `
 }

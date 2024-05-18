@@ -46,7 +46,7 @@ nvm -v
 curl --header "Content-Type: application/json" \
           --request POST \
           --data '{"username":"xyz","section":"x", "details":"ddddd"}' \
-          http://localhost:8090/api/comment
+          http://localhost:8091/api/comment
 
 curl  -H "ind: fa"  "http://localhost:8091/api/comment"
 ```
