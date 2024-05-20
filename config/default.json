@@ -2,8 +2,9 @@
    "APP":{
       "database":"delfos",
       "user": "root",
-      "password": "Delfos123.,",
-      "host":"18.230.92.149"
+      "password": "Peru123.,",
+      "host":"127.0.0.1", 
+      "port":8091
    }
 
 }
