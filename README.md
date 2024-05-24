@@ -50,3 +50,9 @@ curl --header "Content-Type: application/json" \
 
 curl  -H "ind: fa"  "http://localhost:8091/api/comment"
 ```
+
+
+### inciar app
+```bash
+npm install
+```
