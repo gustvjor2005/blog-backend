@@ -23,7 +23,7 @@ module.exports = (app) => {
     const sql_ = sqlGet(rq.get("ind"));
     pool.query(sql_, (err, rs_) => {
       if (err) {
-        console.error(date, "Error realizando consulta a bd");
+        console.error(date, "Error realizando consulta a bd" , err.cause);
         return;
       } else {
         rs.json(rs_);

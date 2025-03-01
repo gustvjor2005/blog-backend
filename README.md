@@ -10,10 +10,7 @@ Para crear el proyecto, sigue estos comandos:
 ```bash
 sudo apt install npm
 npm init -y
-npm install mysql
-npm install express
-npm install cors
-npm install config
+npm install mysql express cors config
 ```
 
 ### install Node Js
@@ -21,11 +18,6 @@ npm install config
 sudo apt update
 sudo apt install nodejs
 node -v #v12.22.9
-```
-### install nginx
-```bash
-sudo apt update
-sudo apt install ngnix
 ```
 ### install node version manager NVM
 ```bash
